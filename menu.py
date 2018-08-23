@@ -151,19 +151,42 @@ def face_menu(part):
 
         if len(glob.glob(path + "*")) > 0:
             for i in range(len(glob.glob(path + "*"))):
-                img_path = path_cv + low_part + str(i + 1) + ".png"
-                img = cv2.imread(img_path)
-                img = resize_img(img, w_small, h_small)
-                cv2.imwrite(path + low_part + str(i + 1) + ".png", img)
+                if part == "EYEBROW":
+                    if i % 2 == 0 and i != 1:
+                        ind = glob.glob(path + "*")[i][-5]
+                        img_path = path_cv + low_part + str(ind) + ".png"
+                        img = cv2.imread(img_path)
+                        img = resize_img(img, w_small, h_small)
+                        cv2.imwrite(path + low_part + str(ind) + ".png", img)
 
-                img = pygame.image.load(img_path).convert_alpha()
-
-                if old_pos[0] + 20 < width - w_small - 20:
-                    btns.append(Button(old_pos[0] + 20, old_pos[1], w_small, h_small, low_part + str(i + 1), mousepos, click, 1, img= img))
-                    old_pos = (old_pos[0] + w_small + 20, old_pos[1])
+                        img = pygame.image.load(img_path).convert_alpha()
                 else:
-                    btns.append(Button(20 , old_pos[1] + h_small + 20, w_small, h_small, low_part + str(i + 1), mousepos, click, 1, img = img))
-                    old_pos = (20 + w_small, old_pos[1] + h_small + 20)
+                    img_path = path_cv + low_part + str(i + 1) + ".png"
+                    img = cv2.imread(img_path)
+                    img = resize_img(img, w_small, h_small)
+                    cv2.imwrite(path + low_part + str(i + 1) + ".png", img)
+
+                    img = pygame.image.load(img_path).convert_alpha()
+
+                if part == "EYEBROW":
+                    if i % 2 == 0 and i != 1:
+                        if old_pos[0] + 20 < width - w_small - 20:
+                            btns.append(
+                                Button(old_pos[0] + 20, old_pos[1], w_small, h_small, low_part + str(i + 1), mousepos,
+                                       click, 1, img=img))
+                            old_pos = (old_pos[0] + w_small + 20, old_pos[1])
+                        else:
+                            btns.append(
+                                Button(20, old_pos[1] + h_small + 20, w_small, h_small, low_part + str(i + 1), mousepos,
+                                       click, 1, img=img))
+                            old_pos = (20 + w_small, old_pos[1] + h_small + 20)
+                else:
+                    if old_pos[0] + 20 < width - w_small - 20:
+                        btns.append(Button(old_pos[0] + 20, old_pos[1], w_small, h_small, low_part + str(i + 1), mousepos, click, 1, img= img))
+                        old_pos = (old_pos[0] + w_small + 20, old_pos[1])
+                    else:
+                        btns.append(Button(20 , old_pos[1] + h_small + 20, w_small, h_small, low_part + str(i + 1), mousepos, click, 1, img = img))
+                        old_pos = (20 + w_small, old_pos[1] + h_small + 20)
 
             for btn in btns:
                 btn.display()

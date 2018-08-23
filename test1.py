@@ -1,9 +1,7 @@
 import cv2
 import numpy
+import glob
 
-img = cv2.imread("download.png")
-cv2.imshow("download", img)
-
-print(img[:, :, 2])
-
-cv2.waitKey()
+path = "picture/" + "eyebrow" + "/"
+ind = glob.glob(path + "*")[2][-5]
+print(ind)
