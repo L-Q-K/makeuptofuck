@@ -76,10 +76,12 @@ def start():
 
                 # EYEBROW:
 
-                w_lmt = int(kc_2_diem(shape[17], shape[21]))
-                h_lmt = int(kc_2_diem(shape[19], shape[37])/2)
-                w_lmp = int(kc_2_diem(shape[22], shape[26]))
-                h_lmp = int(kc_2_diem(shape[24], shape[44])/2)
+                w_lmt = int(kc_2_diem(shape[17], shape[21])) + 2
+                h_lmt = int(kc_2_diem(shape[19], shape[37])/2) + 7
+                w_lmp = int(kc_2_diem(shape[22], shape[26])) + 2
+                h_lmp = int(kc_2_diem(shape[24], shape[44])/2) + 7
+                print(int(shape[17][0]/ratio), int(shape[19][1]/ratio))
+                print(int(shape[22][0]/ratio), int(shape[24][1]/ratio))
 
                 if len(mask_name["EYEBROW"]) == 1:
                     if w_lmt > 0 and h_lmt > 0:
@@ -87,7 +89,7 @@ def start():
                         apply_white_mask(frame, int(shape[17][0]/ratio), int(shape[19][1]/ratio), w_lmt, h_lmt, lmt)
                     if w_lmp > 0 and h_lmp > 0:
                         lmp = cv2.imread('picture\\eyebrow\\' + mask_name["EYEBROW"][0] + '_1.png')
-                        apply_white_mask(frame,int(shape[22][0]/ratio),int(shape[24][1]/ratio),w_lmp,h_lmp,lmp)
+                        apply_white_mask(frame,int(shape[22][0]/ratio), int(shape[24][1]/ratio) - 4, w_lmp, h_lmp, lmp)
 
                 # EYE
                 w_leye = int(kc_2_diem(shape[37], shape[38]))+8
