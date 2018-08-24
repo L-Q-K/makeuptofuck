@@ -26,7 +26,7 @@ w_big = 95
 h_big = 50
 
 display_surf = pygame.display.set_mode((width, height))
-pygame.display.set_caption("How to be a beautiful girl?")
+pygame.display.set_caption("Menu")
 
 screen_ = pygame.display.set_mode((width, height))
 
