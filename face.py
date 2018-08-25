@@ -6,7 +6,6 @@ import math
 from detect_face_white import *
 import menu
 import pygame
-
 from threading import Thread
 
 import os
@@ -80,8 +79,6 @@ def start():
                 h_lmt = int(kc_2_diem(shape[19], shape[37])/2) + 7
                 w_lmp = int(kc_2_diem(shape[22], shape[26])) + 2
                 h_lmp = int(kc_2_diem(shape[24], shape[44])/2) + 7
-                print(int(shape[17][0]/ratio), int(shape[19][1]/ratio))
-                print(int(shape[22][0]/ratio), int(shape[24][1]/ratio))
 
                 if len(mask_name["EYEBROW"]) == 1:
                     if w_lmt > 0 and h_lmt > 0:
@@ -92,18 +89,16 @@ def start():
                         apply_white_mask(frame,int(shape[22][0]/ratio), int(shape[24][1]/ratio) - 4, w_lmp, h_lmp, lmp)
 
                 # EYE
-                w_leye = int(kc_2_diem(shape[37], shape[38]))+8
+                w_leye = int(kc_2_diem(shape[37], shape[38])) + 3
                 h_leye = w_leye
-                w_reye = int(kc_2_diem(shape[43], shape[44]))+8
+                w_reye = int(kc_2_diem(shape[43], shape[44])) + 3
                 h_reye = w_reye
 
                 if len(mask_name["EYE"]) == 1:
                     leye = cv2.imread('picture\\eye\\' + mask_name["EYE"][0] + '.png')
-                    print('picture\\eye\\' + mask_name["EYE"][0] + '.png')
-                    print(type(leye))
 
                     if w_leye > 0 and h_leye > 0:
-                        apply_white_mask(frame, int(shape[43][0]/ratio - 3), int(shape[43][1]/ratio-3), w_leye, h_leye, leye)
+                        apply_white_mask(frame, int(shape[43][0]/ratio - 2), int(shape[43][1]/ratio-3), w_leye, h_leye, leye)
                     if w_reye > 0 and h_reye > 0:
                         apply_white_mask(frame, int(shape[37][0]/ratio), int(shape[37][1]/ratio-3), w_reye, h_reye, leye)
 
