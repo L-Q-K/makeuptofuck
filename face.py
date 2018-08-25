@@ -49,6 +49,7 @@ thread_menu.start()
 mask_name = menu.btn_clicked
 
 def start():
+    global ratio
     while True:
         cv2.moveWindow("BoyHelpsMakeUp", 500, 100)
 
@@ -89,16 +90,16 @@ def start():
                         apply_white_mask(frame,int(shape[22][0]/ratio), int(shape[24][1]/ratio) - 4, w_lmp, h_lmp, lmp)
 
                 # EYE
-                w_leye = int(kc_2_diem(shape[37], shape[38])) + 3
+                w_leye = int(kc_2_diem(shape[37], shape[38])) + 5
                 h_leye = w_leye
-                w_reye = int(kc_2_diem(shape[43], shape[44])) + 3
+                w_reye = int(kc_2_diem(shape[43], shape[44])) + 5
                 h_reye = w_reye
 
                 if len(mask_name["EYE"]) == 1:
                     leye = cv2.imread('picture\\eye\\' + mask_name["EYE"][0] + '.png')
 
                     if w_leye > 0 and h_leye > 0:
-                        apply_white_mask(frame, int(shape[43][0]/ratio - 2), int(shape[43][1]/ratio-3), w_leye, h_leye, leye)
+                        apply_white_mask(frame, int(shape[43][0]/ratio - 5), int(shape[43][1]/ratio-3), w_leye, h_leye, leye)
                     if w_reye > 0 and h_reye > 0:
                         apply_white_mask(frame, int(shape[37][0]/ratio), int(shape[37][1]/ratio-3), w_reye, h_reye, leye)
 

@@ -221,13 +221,13 @@ def main():
         click = pygame.mouse.get_pressed()
 
         lip_btn = Button(20, height - h_big - 20, w_big, h_big, "LIP", mousepos, click, 0, "Lip",
-                         color="blue")
+                         color="red")
         eye_btn = Button(20 + w_big + 20, height - h_big - 20, w_big, h_big, "EYE", mousepos, click, 0,
                          "Eye", color="blue")
         eyebrow_btn = Button(20 + w_big * 2 + 40, height - h_big - 20, w_big, h_big, "EYEBROW", mousepos, click,
-                             0, "Eyebrow", color="blue")
+                             0, "Eyebrow", color="green")
         beard_btn = Button(20 + w_big * 3 + 60, height - h_big - 20, w_big, h_big, "BEARD", mousepos, click, 0,
-                           "Beard", color="blue")
+                           "Beard", color="yellow")
 
         btns = [lip_btn, eye_btn, eyebrow_btn, beard_btn]
         program = Program(btns)
